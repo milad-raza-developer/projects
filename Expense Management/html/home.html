@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Management system | Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"
+      integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="../css/home.css" />
+  </head>
+  <body>
+    <nav class="nav-bar">
+      <div id="menu-logo">
+        <div class="sub-menu-logo" id="menu-logo-sub-div" onclick="sideNav()">
+          <span class="menu-logo-span"></span>
+          <span class="menu-logo-span"></span>
+          <span class="menu-logo-span"></span>
+        </div>
+      </div>
+      <h1>Expense Manager</h1>
+    </nav>
+
+    <div class="side-nav" id="side-navbar">
+      <div class="user-info">
+        <div class="image">
+          <img src="../images/logo.jpg" width="48" height="48" alt="User" />
+        </div>
+        <div class="info-container">
+          <div class="user-data">Milad Raza</div>
+          <div class="user-data">mrsolutions@gmail.com</div>
+        </div>
+      </div>
+
+      <div class="sub-side-nav">
+        <ul class="side-nav-ul">
+          <li class="side-nav-list">
+            <a href=""
+              ><i class="fas fa-qrcode side-nav-icon"></i
+              ><span class="li-text">Dashboard</span></a
+            >
+          </li>
+          <li class="side-nav-list">
+            <a href=""
+              ><i class="fas fa-user side-nav-icon"></i
+              ><span class="li-text">My Account</span></a
+            >
+          </li>
+          <li class="side-nav-list">
+            <a href=""
+              ><i class="fas fa-money-check side-nav-icon"></i
+              ><span class="li-text">Expenses</span></a
+            >
+          </li>
+          <li class="side-nav-list">
+            <a href=""
+              ><i class="fas fa-dollar-sign side-nav-icon"></i
+              ><span class="li-text">Income</span></a
+            >
+          </li>
+          <li class="side-nav-list">
+            <a href=""
+              ><i class="fas fa-stream side-nav-icon"></i
+              ><span class="li-text">Expense Category</span></a
+            >
+          </li>
+          <li class="side-nav-list">
+            <a href=""
+              ><i class="fas fa-stream side-nav-icon"></i
+              ><span class="li-text">Income Category</span></a
+            >
+          </li>
+          <li class="side-nav-list">
+            <a href=""
+              ><i class="fas fa-bookmark side-nav-icon"></i
+              ><span class="li-text">Type</span></a
+            >
+          </li>
+          <li class="side-nav-list">
+            <a href=""
+              ><i class="fas fa-info-circle side-nav-icon"></i
+              ><span class="li-text">About Us</span></a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="main-box">
+        <div class="sub-container">
+            <div class="box-head">
+                <h2>Expenses</h2>
+                <div><button class="add-btn" onclick="modalOpen()"><i class="fas fa-plus"></i> <span class="add-btn-text">Add Expenses</span></button></div>
+            </div>
+
+            <div class="data-div">
+                <div class="filter-div">
+                    <div class="filter-record-div">
+                        <span>Show</span>
+                     <select>
+                        <option>All</option> 
+                        <option>10</option>
+                         <option>25</option>
+                         <option>50</option>
+                         <option>100</option>
+                         <option>200</option>
+                         <option>500</option>
+                         <option>1000</option>
+                     </select>
+                     <span>entries</span>
+                </div>
+
+                <div class="filter-search-div">
+                    <input type="search" placeholder="Search" class="search-input"/>
+                    <span class="search-icon"><i class="fas fa-search"></i></span>
+                </div>
+            </div>
+
+            <div class="data-table-div">
+                <table class="data-table">
+                    <thead>
+                    <tr>
+                        <th><input type="checkbox"/></th>
+                        <th>Date <i class="fas fa-sort-alt"></i></th>
+                        <th>Description</th>
+                        <th>Amount</th>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="exp-table-body">
+      
+                </tbody>
+                </table>
+                <button class="dlete-all-btn"><img src="../images/delete2.jpg" class="action-icon"/></button>
+                
+                <br />
+                <div class="entries-info">Showing 1 to 2 of 2 entries</div>
+            </div>
+        </div>
+
+    </div>
+
+<!-- modal header -->
+    <div class="modal" id="modal-div">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="box-title">Expenses</h4>
+                    <div>
+                        <button class="close" onclick="modalClose()">
+                        <span><i class="fas fa-times"></i></span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- <div class="modal-body">
+                    <div class="modal-body-content">
+                      <div class="form-group">
+                        <div class="input-div">
+                          <input type="date" id="exp-date" class="input"/>
+                          <label class="form-label">Date<span class="red-text">*</span></label>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="input-div">
+                          <input type="text" id="exp-description" class="input"/>
+                          <label class="form-label">Description<span class="red-text">*</span></label>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <div class="input-div">
+                          <input type="number" id="exp-amount"  class="input"/>
+                          <label class="form-label">Amount<span class="red-text">*</span></label>
+                        </div>
+                      </div>
+
+                      
+
+                      <div class="form-group">
+                        <div class="input-div">
+                        <input type="text" id="exp-category" class="input"/>
+                        <label class="form-label">Category</label>
+                      </div>
+                      </div>
+
+                      <div>
+                        <input type="file"/>
+                      </div>
+                </div>
+
+            </div> -->
+
+            <div class="modal-body">
+              <form id="form">
+                <div class="box-body">
+                  <div class="form-group">
+                    <div class="form-line focused">
+                      <input type="date"  onload="getDate()" class="form-control" id="expenses_date" name="expenses_date" value="" required />
+                      <label for="expenses_date" class="date-label">Date <span class="text-red">*</span></label>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <div class="form-line">
+                      <input type="text" class="form-control" id="expenses_description" name="expenses_description" required/>
+                      <label for="expenses_description" class="form-label">Description <span class="text-red">*</span></label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="form-line">
+                      <input type="number" class="form-control" id="expenses_amount" name="expenses_amount" required />
+                      <label for="expenses_amount" class="form-label">Amount <span class="text-red">*</span></label>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <div class="form-line">
+                      <select class="form-control" id="expenses_category" name="expenses_category">
+                        <option></option>
+                        <option>1</option>
+                      </select>
+                      <label class="category-label">Category </label>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <input type="file" placeholder="Upload Receipt" class="file-upload" id="expenses_upload_receipt" name="expenses_upload_receipt"/>
+                  </div>
+            
+                </div>
+                <!-- /.box-body -->
+                
+                <div class="box-footer" id="save-exp-btn-div">
+                  <button class="submit-btn" id="save-exp-btn" onclick="addExpense(); modalClose()" type="submit">Save</button>
+                </div>
+              </form>
+            </div>
+                        <!-- <script>
+                      $.AdminBSB.input.activate();
+                      $(document).ready(function() {
+                      $('.mka-cl').on('click', function() {
+                        if($(this).parents('.input-group').first().find('input.mka-pass-field').hasClass('showing')){
+                          $(this).parents('.input-group').first().find('input.mka-pass-field').removeClass('showing').attr('type', 'password');
+                        } else {
+                          $(this).parents('.input-group').first().find('input.mka-pass-field').addClass('showing').attr('type', 'text');
+                        }
+                      });
+                    });
+                  </script> -->
+
+
+
+
+
+            <!-- div class="modal-footer">
+              <input type="submit" class="modal-sub-btn" />
+            </div>< -->
+
+        </div>
+    </div>
+  </div>
+
+    <script>
+
+// function getDate(){
+//     var today = new Date();
+
+// document.getElementById("expenses_date").value = today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
+// }
+      
+function getDate() {
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; //January is 0!
+  var yyyy = today.getFullYear();
+
+  if(dd<10) {
+      dd = '0'+dd
+  } 
+
+  if(mm<10) {
+      mm = '0'+mm
+  } 
+
+  today = yyyy + '-' + mm + '-' + dd;
+  console.log(today);
+  document.getElementById("expenses_date").value = today;
+}
+
+window.onload = function() {
+  getDate();
+}
+
+document.getElementById("expenses_date").value = "2020-04-12";
+  
+      function sideNav() {
+          var sideMenu = document.getElementById("side-navbar").className;
+          console.log(sideMenu)
+          document.getElementById("side-navbar").classList.toggle("active");
+        }
+        
+        function modalOpen(){
+            // alert("hello")
+
+
+          document.getElementById("modal-div").className = "modal-show"
+      }
+
+      function modalClose(){
+        document.getElementById("modal-div").className = "modal"
+      }
+
+var expDate;
+
+var expDescription;
+
+var expAmmount;
+
+var expCategory;
+
+var expFile;
+
+var expenseData;
+
+var expensesDataArray = [];
+
+var jsonExpenseObject;
+
+var getExpObjectArray = localStorage.getItem("expenseObjectsArray");
+
+var parsExpObjectArray = JSON.parse(getExpObjectArray);
+
+var expTable = document.getElementById("exp-table-body")
+
+if (parsExpObjectArray !== null) {
+  for (var j = 0; j < parsExpObjectArray.length; j++) {
+    expensesDataArray.push(parsExpObjectArray[j]);
+  }
+}
+
+function expenseTableGenreator() {
+  document.getElementById("exp-table-body").innerHTML = null;
+
+  for(var i = 0; i < expensesDataArray.length; i++){
+    document.getElementById("exp-table-body").innerHTML += `
+        <tr>
+          <td><input type="checkbox"/></td>
+          <td>${expensesDataArray[i].expDate}</td>
+          <td>${expensesDataArray[i].expDescription}</td>
+          <td>${expensesDataArray[i].expAmmount}</td>
+          <td>${expensesDataArray[i].expCategory}</td>
+          <td><img src="../images/edit.png" class="action-icon edit-icon" onclick="editExp(${i})"/><img src="../images/delete2.jpg" class="action-icon" onclick="deleteExp(${i})"/></td>
+        </tr>
+        `;
+  }
+}
+
+expenseTableGenreator();
+  
+
+
+function deleteExp(trID) {
+  expensesDataArray.splice(trID, 1);
+
+  localStorage.removeItem("expenseObjectsArray")
+
+  jsonExpenseObject = JSON.stringify(expensesDataArray);
+
+  localStorage.setItem("expenseObjectsArray", jsonExpenseObject);
+
+  getExpObjectArray = localStorage.getItem("expenseObjectsArray");
+
+  parsExpObjectArray = JSON.parse(getExpObjectArray);
+  
+  expenseTableGenreator();
+
+}
+
+function editExpense(edtId) {
+  
+  
+  alert(edtId)
+
+
+  expensesDataArray[edtId].expDate = document.getElementById("expenses_date").value
+
+  expensesDataArray[edtId].expDescription = document.getElementById("expenses_description").value
+  
+  expensesDataArray[edtId].expAmmount = document.getElementById("expenses_amount").value
+  
+  expensesDataArray[edtId].expCategory = document.getElementById("expenses_category").value
+
+  console.log(expensesDataArray)
+
+  
+  // expensesDataArray[edtId].expDate = expDate;
+  
+  // expensesDataArray[edtId].expDescription = expDescription;
+  
+  // expensesDataArray[edtId].expAmmount = expAmmount;
+  
+  // expensesDataArray[edtId].expCategory = expCategory;
+  
+  // expensesDataArray[edtId].expFile = expFile;
+
+  // console.log(expensesDataArray)
+  
+  // localStorage.removeItem("expenseObjectsArray");
+  
+  // jsonExpenseObject = JSON.stringify(expensesDataArray);
+  
+  // localStorage.setItem("expenseObjectsArray", jsonExpenseObject);
+  
+  // getExpObjectArray = localStorage.getItem("expenseObjectsArray");
+  
+  // parsExpObjectArray = JSON.parse(getExpObjectArray);
+  
+  // document.getElementById("exp-table-body").innerHTML = null;
+  
+  // expenseTableGenreator()
+  }
+
+
+function editExp(edtId) {
+  // document.getElementById("editId" + edtId).className = "hide";
+
+  // document.getElementById("inputId" + edtId).className = "show";
+
+  // document.getElementById("sbtId" + edtId).className = "show";
+  
+  modalOpen()
+
+  alert(edtId)
+
+  document.getElementById("save-exp-btn").style.display = "none"
+
+  document.getElementById("save-exp-btn-div").innerHTML = `
+  <button class="submit-btn" onclick="editExpense(${edtId}); modalClose()">Edit</button>
+  `
+  document.getElementById("expenses_date").value = expensesDataArray[edtId].expDate;
+  
+  document.getElementById("expenses_description").value = expensesDataArray[edtId].expDescription;
+  
+  document.getElementById("expenses_amount").value = expensesDataArray[edtId].expAmmount;
+  
+  document.getElementById("expenses_category").value = expensesDataArray[edtId].expCategory;
+
+  alert("clickIcon")
+
+
+
+
+  // var curName = names[edtId];
+
+  // document.getElementById("inputField" + edtId).value = curName;
+}
+
+
+
+function addExpense() {
+    expDate = document.getElementById("expenses_date").value;
+  
+    expDescription = document.getElementById("expenses_description").value
+  
+    expAmmount = document.getElementById("expenses_amount").value;
+  
+    expCategory = document.getElementById("expenses_category").value;
+  
+    expFile = document.getElementById("expenses_upload_receipt").value;
+  
+    expenseData = new Expenses(expDate, expDescription, expAmmount, expCategory, expFile);
+  
+    expensesDataArray.push(expenseData);
+  
+    jsonExpenseObject = JSON.stringify(expensesDataArray);
+  
+    localStorage.setItem("expenseObjectsArray", jsonExpenseObject);
+  
+    getExpObjectArray = localStorage.getItem("expenseObjectsArray");
+  
+    parsExpObjectArray = JSON.parse(getExpObjectArray);
+  
+    expenseTableGenreator();
+  }
+
+
+function Expenses(expDate, expdescription, expAmmount, expCategory, expFile) {
+  this.expDate = expDate;
+  this.expDescription = expDescription;
+  this.expAmmount = expAmmount;
+  this.expCategory = expCategory;
+  this.expFile = expFile;
+}
+
+    </script>
+  </body>
+</html>

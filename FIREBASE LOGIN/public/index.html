@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"
+      integrity="sha384-REHJTs1r2ErKBuJB0fCK99gCYsVjwxHrSU0N7I1zl9vZbggVJXRMsv/sLlOAGb4M"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="./css/index.css" />
+  </head>
+  <body>
+    <div class="container" id="container">
+      <div class="form-container sign-up-container">
+        <form>
+          <h1>Create Account</h1>
+          <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <span>or use your email for registration</span>
+          <input type="text" placeholder="Name" />
+          <input type="email" placeholder="Email" />
+          <input type="password" placeholder="Password" />
+          <button>Sign Up</button>
+        </form>
+      </div>
+      <div class="form-container sign-in-container">
+        <form>
+          <h1>Sign in</h1>
+          <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+          <span>or use your account</span>
+          <input type="email" placeholder="Email" id="email-field" />
+          <input type="password" placeholder="Password" id="password-field"/>
+          <button onclick="login()">Sign In</button>
+        </form>
+      </div>
+      <div class="overlay-container">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <h1>Welcome Back</h1>
+            <p>
+              To Keep connected with us please login with your personal info
+            </p>
+            <button class="ghost" id="signIn">Sign In</button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1>Heelo, Friend!</h1>
+            <p>Enter Your Personal details and starts journey with us</p>
+            <button class="ghost" id="signUp">sign Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="user-div">
+      <h3>Welcome User</h3>
+      <p>Welcome to Firebase web login Example. You're currentlu logged in.</p>
+      <button>Logout</button>
+    </div>
+
+    <script src="./js/index.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyDG_Qc2Z8sDlLQxAWXjYCN1KX80iEm8l9k",
+        authDomain: "expense-manager-8b0d6.firebaseapp.com",
+        databaseURL: "https://expense-manager-8b0d6.firebaseio.com",
+        projectId: "expense-manager-8b0d6",
+        storageBucket: "expense-manager-8b0d6.appspot.com",
+        messagingSenderId: "321355379685",
+        appId: "1:321355379685:web:dd6d1e9b1e40e5ad6a750c",
+        measurementId: "G-Y71S3N1ZZD",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+  </body>
+</html>
